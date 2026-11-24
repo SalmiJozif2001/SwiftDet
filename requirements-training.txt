@@ -1,0 +1,7 @@
+# Training dependencies (GPU recommended: AMP fp16 and channels-last are enabled when CUDA is available)
+# Tested with: torch (Kaggle T4 run), numpy 2.4.6, pyyaml 6.0.3, opencv-python-headless, psutil 7.2.2.
+torch>=2.0
+numpy>=1.26
+pyyaml>=6.0
+opencv-python-headless>=4.8
+psutil>=5.9

@@ -1,0 +1,43 @@
+# ============================================================
+# .gitignore — SwiftDet source repository
+# ============================================================
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Packaging / build
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Generated model artifacts (export/quantization outputs; the release artifacts live in the
+# Hugging Face model repository swiftdet-voc480/)
+outputs/
+runs/
+swiftdet_results.zip
+*.onnx
+*.pt
+
+# Temporary files (e.g. atomic_save's .tmp files, benchmark snapshots)
+*.tmp
+
+# Local dataset copies / calibration inputs (root-level only: the swiftdet/data package is code)
+/data/
+datasets/
+
+# Logs (local run logs are not intended for distribution)
+*.log
+swiftdet-claude.log
+
+# IPython / notebook checkpoints
+.ipynb_checkpoints/
+
+# Local VSCode/JetBrains configs
+.vscode/
+.idea/
+
+# Testing
+.pytest_cache/
+.coverage

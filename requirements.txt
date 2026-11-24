@@ -1,0 +1,6 @@
+# Inference dependencies (ONNX Runtime CPU, no torch needed for ONNX inference)
+# Tested with: numpy 2.4.6, onnxruntime 1.31.1, opencv-python-headless 5.1.0, psutil 7.2.2 (Python 3.14.6).
+numpy>=1.26
+onnxruntime>=1.16
+psutil>=5.9
+opencv-python-headless>=4.8

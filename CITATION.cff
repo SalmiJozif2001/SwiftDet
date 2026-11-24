@@ -1,0 +1,19 @@
+
+cff-version: 2.2.0
+message: "Please cite this software using the metadata below."
+type: software
+title: SwiftDet
+abstract: "SwiftDet — a custom lightweight object-detection architecture (SwiftDet-PConv-CPU) for efficient CPU inference, trained on Pascal VOC 2007 + 2012. Includes training, evaluation and ONNX/INT8 deployment code and live-camera inference tools."
+version: 0.1.0
+date-released: 2026-11-24
+repository: https://github.com/SalmiJozif2001/SwiftDet
+keywords:
+  - object-detection
+  - onnx
+  - cpu-inference
+  - pascal-voc
+  - custom-architecture
+  - lightweight-model
+authors:
+  - given-names: Youssef
+    family-names: Salmi

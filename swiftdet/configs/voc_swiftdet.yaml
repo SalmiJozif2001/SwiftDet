@@ -1,0 +1,45 @@
+model:
+  name: SwiftDet-PConv-CPU
+  num_classes: 20
+  reg_max: 7
+  strides: [8, 16, 32]
+  neck_channels: 64
+  input_size: [480, 480]
+
+data:
+  dataset: pascal_voc_0712
+  root: /kaggle/input
+  train_sets: [["2007", "trainval"], ["2012", "trainval"]]
+  val_set: [["2007", "test"]]
+  num_workers: 4
+
+train:
+  seed: 42
+  epochs: 300
+  no_aug_epochs: 20
+  batch_size: 64
+  amp_fp16: true
+  channels_last: true
+  optimizer: SGD
+  lr0: 0.01
+  momentum: 0.937
+  weight_decay: 0.0005
+  warmup_epochs: 5
+  ema_decay: 0.9998
+  mosaic_prob: 0.8
+  mixup_prob: 0.15
+  assigner: simota
+  grad_clip: 10.0
+  val_every: 20
+  val_images: 500
+  loss_weights:
+    vfl: 1.0
+    giou: 2.0
+    dfl: 0.25
+
+deploy:
+  opset: 17
+  onnx_fp32: outputs/swiftdet_voc480_fp32.onnx
+  onnx_int8_qdq: outputs/swiftdet_voc480_int8_qdq.onnx
+  calib_images: 300
+  reduce_range: true
