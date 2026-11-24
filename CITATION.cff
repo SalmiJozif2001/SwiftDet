@@ -5,6 +5,7 @@ type: software
 title: SwiftDet
 abstract: "SwiftDet — a custom lightweight object-detection architecture (SwiftDet-PConv-CPU) for efficient CPU inference, trained on Pascal VOC 2007 + 2012. Includes training, evaluation and ONNX/INT8 deployment code and live-camera inference tools."
 version: 0.1.0
+license: Apache-2.0
 date-released: 2026-11-24
 repository: https://github.com/SalmiJozif2001/SwiftDet
 keywords:
