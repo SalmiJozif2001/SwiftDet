@@ -15,8 +15,8 @@ The evaluator is `swiftdet/eval_voc.py` (`evaluate_onnx` for the ONNX files):
 
 ## Metrics
 
-- **AP50** — Average Precision of each class computed at the **IoU threshold 0.50**, averaged over the 20 classes that have at least one ground-truth box (classes without GT are skipped). Reported as a percentage.
-- **mAP50-95** — the standard VOC2007+ metric: the **mean of AP over the 10 IoU thresholds 0.50, 0.55, …, 0.95** (`np.linspace(0.5, 0.95, 10)`). Also reported as a percentage.
+- **AP50** — Average Precision of each class computed at the **IoU threshold 0.50**, averaged over the classes that have at least one ground-truth box (classes without GT are skipped). AP uses an all-point precision–recall integral after applying the monotonically non-increasing precision envelope; it is **not** the legacy VOC2007 11-point AP calculation. Reported as a percentage.
+- **mAP50-95** — a **project-computed COCO-style metric**: the mean of AP over the 10 IoU thresholds 0.50, 0.55, …, 0.95 (`np.linspace(0.5, 0.95, 10)`). It uses this repository's VOC evaluator and is not a claim of an official COCO evaluation result. Also reported as a percentage.
 - Both are returned as fractions (0–1) by `evaluate_fn` and converted to percentages in the tables below.
 
 ## Evaluation results (verified from the run logs)
