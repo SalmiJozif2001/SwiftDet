@@ -2,7 +2,7 @@
 
 SwiftDet is a custom lightweight object-detection architecture (deployment name: **SwiftDet-PConv-CPU**) for efficient CPU inference. It was trained from scratch on Pascal VOC 2007 + 2012, then fused and exported to static ONNX for CPU deployment.
 
-> **Release status: SwiftDet v0.1.0 — Research Preview.** Not production-certified. No license has been specified yet (see [Known limitations](#known-limitations)).
+> **Release status: SwiftDet v0.1.0 — Research Preview.** Not production-certified. Original SwiftDet code and project-authored materials are released under the [Apache License 2.0](LICENSE).
 
 ## Architecture
 
@@ -98,7 +98,7 @@ Details: [benchmarks/VOC2007_RESULTS.md](benchmarks/VOC2007_RESULTS.md), [benchm
 ## Known limitations
 
 - **Not production-certified** — research preview (v0.1.0).
-- **No license specified yet** — decision pending (do not assume any license).
+- **License scope:** original SwiftDet source code, project documentation, configuration files and model artifacts authored by the project are released under Apache License 2.0. Third-party materials, including Pascal VOC images and annotations, are not relicensed by this project and remain subject to their own terms.
 - **VOC-only**: 20 Pascal VOC classes; not a general-purpose detector.
 - **CPU deployment only**: static ONNX, `CPUExecutionProvider`; the models require no CUDA, but the code paths for deployment assume CPU.
 - **Fixed input size**: 480×480 letterboxed input.
@@ -120,6 +120,14 @@ Details: [benchmarks/VOC2007_RESULTS.md](benchmarks/VOC2007_RESULTS.md), [benchm
 ## Citation
 
 See [CITATION.cff](CITATION.cff) for the machine-readable citation metadata (v0.1.0); it identifies the author as Youssef Salmi.
+
+## License
+
+Copyright 2026 Youssef Salmi.
+
+The original SwiftDet source code, documentation, configuration files and project-authored model artifacts are licensed under the [Apache License, Version 2.0](LICENSE).
+
+This license does not grant rights to third-party materials. Pascal VOC images and annotations are not redistributed in this repository and remain subject to the original dataset terms. Any third-party code or assets included in the future must retain their own license and attribution notices.
 
 ## About this release
 
