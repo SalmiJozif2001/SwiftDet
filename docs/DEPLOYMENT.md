@@ -30,15 +30,18 @@ Checksums of the artifacts: [manifest.json](../manifest.json).
 
 ## Running inference
 
-From the SwiftDet repository root:
+From the SwiftDet repository root. The examples assume that `SwiftDet` and `swiftdet-voc480` are sibling folders:
 
 ```powershell
-# Benchmark + detections (on the prepared model)
-python inference/main.py --onnx ../swiftdet-voc480/onnx/swiftdet_voc480_prep.onnx --threads 2
+# Download the model artifacts into the sibling folder
+python -m pip install -U huggingface_hub
+hf download Youssef2Salmi/swiftdet-voc480 --repo-type model --local-dir ..\swiftdet-voc480
+
+# Benchmark + detections (on the prepared FP32 model)
+python inference\main.py --onnx ..\swiftdet-voc480\onnx\swiftdet_voc480_prep.onnx --threads 2
 
 # Live camera demo
-cd inference
-python live.py --camera 0 --conf 0.35 --threads 2
+python inference\live.py --onnx ..\swiftdet-voc480\onnx\swiftdet_voc480_prep.onnx --camera 0 --conf 0.35 --threads 2
 ```
 
 `inference/main.py` defaults: `--img-size 480`, `--threads` = physical core count, `--conf 0.25`, `--iters 100`, `--warmup 20`.
