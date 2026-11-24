@@ -1,14 +1,31 @@
 # Inference Tools (SwiftDet ONNX)
 
 Command-line tools for running the SwiftDet deployment models in inference mode.
-Run from this directory (they use local module imports).
+Run these commands from this directory (`SwiftDet/inference`). They use local module imports. The examples assume the source repository and model repository are sibling folders:
+
+```text
+Swift/
+├── SwiftDet/
+│   └── inference/
+└── swiftdet-voc480/
+    └── onnx/
+```
+
+Download the model repository once from the `SwiftDet` root:
+
+```powershell
+cd ..
+python -m pip install -U huggingface_hub
+hf download Youssef2Salmi/swiftdet-voc480 --repo-type model --local-dir ..\swiftdet-voc480
+cd inference
+```
 
 Prerequisites (see [requirements.txt](../requirements.txt)): `onnxruntime`, `numpy`, `psutil`, `opencv-python-headless`.
 
 ## `main.py` — ONNX benchmark and detections tool
 
 ```powershell
-python main.py --onnx ../swiftdet-voc480/onnx/swiftdet_voc480_prep.onnx --threads 2 --iters 100
+python main.py --onnx ..\..\swiftdet-voc480\onnx\swiftdet_voc480_prep.onnx --threads 2 --iters 100
 ```
 
 Common options: `--onnx`, `--all` (benchmark every `.onnx` in the model folder), `--image`,
@@ -20,14 +37,13 @@ peak RSS memory, number of detections.
 ## `live.py` — live camera / stream demo
 
 ```powershell
-python live.py --camera 0 --conf 0.35 --threads 2
+python live.py --onnx ..\..\swiftdet-voc480\onnx\swiftdet_voc480_prep.onnx --camera 0 --conf 0.35 --threads 2
 ```
 
 Common options: `--camera` (index, video file, or stream URL), `--display` (auto/window/web/none),
 `--every`, `--mirror`, `--seconds`, `--loop`, `--verbose`, `--width`, `--height`, `--port`.
 
-Runs on CPU (`CPUExecutionProvider`); needs `opencv-python-headless` for the window mode,
-otherwise the stream is served in the browser (`--display web`).
+Runs on CPU (`CPUExecutionProvider`). The headless OpenCV package supports capture and browser-stream mode (`--display web`); for a local GUI window, install the non-headless `opencv-python` package instead.
 
 Supplied live-benchmark results on the Intel Core i5-3320M: 13.4 displayed FPS, P50 model latency
 50.8 ms — see [benchmarks/I5_3320M_LIVE.md](../benchmarks/I5_3320M_LIVE.md).
