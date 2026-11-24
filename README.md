@@ -43,12 +43,15 @@ python -m pip install -r requirements-export.txt    # export & quantization (tor
 Model artifacts are in the Hugging Face model repository (see [Links](#links)):
 
 ```powershell
+# Download model artifacts into a sibling folder (run from the SwiftDet repo root)
+python -m pip install -U huggingface_hub
+hf download Youssef2Salmi/swiftdet-voc480 --repo-type model --local-dir ..\swiftdet-voc480
+
 # Benchmark + detections (ONNX Runtime CPU, 480x480, threads=2)
-python inference/main.py --onnx ../swiftdet-voc480/onnx/swiftdet_voc480_prep.onnx --threads 2
+python inference\main.py --onnx ..\swiftdet-voc480\onnx\swiftdet_voc480_prep.onnx --threads 2
 
 # Live camera demo
-cd inference
-python live.py --camera 0 --conf 0.35 --threads 2
+python inference\live.py --onnx ..\swiftdet-voc480\onnx\swiftdet_voc480_prep.onnx --camera 0 --conf 0.35 --threads 2
 ```
 
 ## Training
@@ -62,10 +65,10 @@ All three training stages are documented in [docs/TRAINING_PIPELINE.md](docs/TRA
 ## Evaluation
 
 ```powershell
-python -m swiftdet.eval_voc --onnx ../swiftdet-voc480/onnx/swiftdet_voc480_fp32.onnx --voc-root <VOC_ROOT>
+python -m swiftdet.eval_voc --onnx ..\swiftdet-voc480\onnx\swiftdet_voc480_fp32.onnx --voc-root <VOC_ROOT>
 ```
 
-Results (4,952 images of the Pascal VOC 2007 test set):
+Results (4,952 images of the Pascal VOC 2007 test set; AP50 uses all-point interpolation, while mAP50-95 is the project's COCO-style mean AP over IoU 0.50–0.95, not the legacy VOC2007 11-point AP protocol):
 
 | Model | AP50 | mAP50-95 |
 |---|---:|---:|
@@ -76,7 +79,7 @@ See [docs/MODEL_EVALUATION.md](docs/MODEL_EVALUATION.md) for details on AP50 / m
 
 ## Links
 
-- Hugging Face model repository: `https://huggingface.co/Youssef2Salmi/swiftdet-voc480` (placeholder — replace `<hf-username>` with your Hugging Face username).
+- Hugging Face model repository: https://huggingface.co/Youssef2Salmi/swiftdet-voc480.
 - Documentation: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md), [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md), [docs/AUDIT_SUMMARY.md](docs/AUDIT_SUMMARY.md).
 - Benchmarks: [benchmarks/README.md](benchmarks/README.md).
 
@@ -116,7 +119,7 @@ Details: [benchmarks/VOC2007_RESULTS.md](benchmarks/VOC2007_RESULTS.md), [benchm
 
 ## Citation
 
-See [CITATION.cff](CITATION.cff) for the machine-readable citation metadata (v0.1.0). Maintainer information is marked as placeholders to be filled in.
+See [CITATION.cff](CITATION.cff) for the machine-readable citation metadata (v0.1.0); it identifies the author as Youssef Salmi.
 
 ## About this release
 
