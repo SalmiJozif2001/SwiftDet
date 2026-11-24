@@ -76,7 +76,7 @@ See [docs/MODEL_EVALUATION.md](docs/MODEL_EVALUATION.md) for details on AP50 / m
 
 ## Links
 
-- Hugging Face model repository: `https://huggingface.co/<hf-username>/swiftdet-voc480` (placeholder — replace `<hf-username>` with your Hugging Face username).
+- Hugging Face model repository: `https://huggingface.co/Youssef2Salmi/swiftdet-voc480` (placeholder — replace `<hf-username>` with your Hugging Face username).
 - Documentation: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md), [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md), [docs/AUDIT_SUMMARY.md](docs/AUDIT_SUMMARY.md).
 - Benchmarks: [benchmarks/README.md](benchmarks/README.md).
 
